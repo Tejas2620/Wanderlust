@@ -39,20 +39,8 @@
     cursor: pointer;
   }
 
-  .line-1 {
-    background: #df6447;
-    height: 0.3em;
-    border-radius: 10em;
-    transition-duration: 500ms;
-  }
-
-  .line-2 {
-    background: #df6447;
-    height: 0.3em;
-    border-radius: 10em;
-    transition-duration: 500ms;
-  }
-
+  .line-1,
+  .line-2,
   .line-3 {
     background: #df6447;
     height: 0.3em;
@@ -67,14 +55,10 @@
   }
 
   #toggleChecker:checked + #togglerLable .checkboxtoggler .line-1 {
-    -webkit-transform: rotate(45deg) translateY(0.7em) translateX(0.7em);
-    -ms-transform: rotate(45deg) translateY(0.7em) translateX(0.7em);
     transform: rotate(45deg) translateY(0.7em) translateX(0.7em);
   }
 
   #toggleChecker:checked + #togglerLable .checkboxtoggler .line-2 {
-    -webkit-transform: rotate(-45deg) translateY(0em) translateX(0.1em);
-    -ms-transform: rotate(-45deg) translateY(0em) translateX(0.1em);
     transform: rotate(-45deg) translateY(0em) translateX(0.1em);
   }
 
@@ -99,7 +83,6 @@
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.7);
     gap: 0.5rem;
-    /* display: none; */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -108,7 +91,6 @@
   .nav-profile a:hover {
     color: #fe424d;
   }
-
 </style>
 
 <nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
@@ -144,10 +126,10 @@
     <div class="navbar-collapse" id="navbarNavAltMarkup">
       <div class="nav-profile">
         <a class="nav-link" href="/listings/new">Airbnb your home</a>
-        <% if(!currUser) { %>
+        <% if (typeof currUser === 'undefined' || !currUser) { %>
         <a class="nav-link" href="/signup"><b>Sign up</b></a>
         <a class="nav-link" href="/login"><b>Log in</b></a>
-        <% } %> <% if(currUser) { %>
+        <% } else { %>
         <a class="nav-link" href="/logout"><b>Log out</b></a>
         <% } %>
       </div>
@@ -160,7 +142,7 @@
   const profileMenu = document.querySelector(".nav-profile");
 
   hamMenu.addEventListener("click", () => {
-    if (profileMenu.style.visibility != "visible") {
+    if (profileMenu.style.visibility !== "visible") {
       profileMenu.style.visibility = "visible";
       profileMenu.style.opacity = 1;
     } else {
@@ -169,7 +151,3 @@
     }
   });
 </script>
-
-<!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
-    <span class="navbar-toggler-icon"></span>
-</button> -->

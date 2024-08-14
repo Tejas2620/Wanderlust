@@ -16,6 +16,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 const ExpressError = require("./utils/ExpressError.js");
+const { setCurrUser } = require("./middleware"); // Import custom middleware
 
 // Import routers
 const listingRouter = require("./routes/listing.js");
@@ -84,10 +85,10 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // Middleware to pass flash messages and current user to all views
+app.use(setCurrUser); // Use custom middleware to set currUser
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
-  res.locals.currUser = req.user;
   next();
 });
 
