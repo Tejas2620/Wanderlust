@@ -4,9 +4,6 @@
 
 Wanderlust is a travel platform that allows users to explore and share their favourite destinations. The project is built using the MERN stack (MongoDB, Express.js, React.js, Node.js) and incorporates various technologies for features like image upload, user authentication, and interactive maps.
 
-## Live Project
-
-Check out the live project: [Wanderlust Live](https://wanderlust-hub.vercel.app/)
 
 ## Technologies Used
 
